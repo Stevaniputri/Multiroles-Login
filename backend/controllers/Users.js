@@ -29,7 +29,7 @@ export const getUserById = async(req, res) =>{
 
 export const createUser = async(req, res) =>{
     const {name, email, password, confPassword, role} = req.body;
-    if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
+    if(password !== confPassword) return res.status(400).json({msg: "Password and confirm password do not match"});
     const hashPassword = await argon2.hash(password);
     try {
         await Users.create({
@@ -50,7 +50,7 @@ export const updateUser = async(req, res) =>{
             uuid: req.params.id
         }
     });
-    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!user) return res.status(404).json({msg: "User not found"});
     const {name, email, password, confPassword, role} = req.body;
     let hashPassword;
     if(password === "" || password === null){
@@ -58,7 +58,7 @@ export const updateUser = async(req, res) =>{
     } else {
         hashPassword = await argon2.hash(password);
     }
-    if(password !== confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
+    if(password !== confPassword) return res.status(400).json({msg: "Password and confirm password do not match"});
     try {
         await Users.update({
             name: name,
@@ -70,7 +70,7 @@ export const updateUser = async(req, res) =>{
                 id: user.id
             }
         });
-        res.status(200).json({msg: "User Updated"});
+        res.status(200).json({msg: "User updated"});
     } catch {
         res.status(400).json({msg: error.message});
     }
@@ -82,14 +82,14 @@ export const deleteUser = async(req, res) =>{
             uuid: req.params.id
         }
     });
-    if(!user) return res.status(404).json({msg: "User tidak ditemukan"});
+    if(!user) return res.status(404).json({msg: "User not found"});
     try {
         await Users.destroy({
             where:{
                 id: user.id
             }
         });
-        res.status(200).json({msg: "User Deleted"});
+        res.status(200).json({msg: "User deleted"});
     } catch {
         res.status(400).json({msg: error.message});
     }
