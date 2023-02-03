@@ -1,0 +1,102 @@
+// Create a user
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Sakha Raka",
+    "email": "sakha@gmail.com",
+    "password": "sakha123",
+    "confPassword": "sakha123",
+    "role": "user"
+}
+
+###
+// Get All Users
+GET http://localhost:5000/users
+
+###
+// Get Single User
+GET http://localhost:5000/users/21d7a0fd-d406-4fb9-b445-c4df91fbe89b
+
+###
+// Update a user
+PATCH  http://localhost:5000/users/21d7a0fd-d406-4fb9-b445-c4df91fbe89b
+Content-Type: application/json
+
+{
+    "password": "121087",
+    "confPassword": "121087"
+}
+
+###
+//Delete a user
+DELETE   http://localhost:5000/users/4915033c-ad0b-4f14-9fd5-ebabf5d70bd1
+
+###
+//Login sebagai admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "121087"
+}
+
+###
+//Login sebagai user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "devina@gmail.com",
+    "password": "210906"
+}
+
+###
+//Login sebagai user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "sakha@gmail.com",
+    "password": "sakha123"
+}
+
+###
+GET http://localhost:5000/me
+
+###
+DELETE http://localhost:5000/logout
+
+###
+// Get all products
+GET http://localhost:5000/products
+
+###
+// Get SINGLE products
+GET http://localhost:5000/products/5b72a21e-93e7-4a2b-8026-16d6d2db1bbe
+
+###
+// POST data products
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "name": "Projector",
+    "price": 700
+}
+
+###
+// Update data products
+PATCH  http://localhost:5000/products/5b72a21e-93e7-4a2b-8026-16d6d2db1bbe
+Content-Type: application/json
+
+{
+    "name": "Mackbook Updated",
+    "price": 700
+}
+
+###
+// Deleted product
+DELETE   http://localhost:5000/products/46d08144-3560-496f-b6a2-5d3af0d696be
+
